@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -40,7 +41,7 @@ class CategoryActivity : ComponentActivity() {
                 ) {
                     println("getCategory")
                     println(getCategoryItems(categoryTitle))
-                    DishListComponent(getCategoryItems(categoryTitle)) //, ::onDetailDishClick)
+                    DishListComponent(getCategoryItems(categoryTitle), ::onDetailDishClick)
                 }
             }
         }
@@ -54,45 +55,43 @@ class CategoryActivity : ComponentActivity() {
         }
     }
 
-//    private fun onDetailDishClick(dish: String) {
-//        Toast.makeText(this, dish, Toast.LENGTH_LONG).show()
-//        val intent = Intent(this, DetailDishActivity::class.java).apply {
-//            putExtra("dishTitle", dish)
-//        }
-//        startActivity(intent)
-//    }
+    private fun onDetailDishClick(dish: String) {
+        Toast.makeText(this, dish, Toast.LENGTH_LONG).show()
+        val intent = Intent(this, DetailDishActivity::class.java).apply {
+            putExtra("dishTitle", dish)
+        }
+        startActivity(intent)
+    }
 }
 
 @Composable
-fun DishListComponent(dishes: List<String>){//, onDetailDishClick: (String) -> Unit) {
+fun DishListComponent(dishes: List<String>, onDetailDishClick: (String) -> Unit) {
     LazyColumn (
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
+
     ) {
         items(dishes.size) {dish ->
-            DishRow(dish = dishes[dish])//, onDetailDishClick)
+            DishRow(dish = dishes[dish], onDetailDishClick)
         }
     }
 }
 
 @Composable
-fun DishRow(dish: String){//, onDetailDishClick: (String) -> Unit) {
-    Text(
-        text = dish,
-        color = Color(0xFFFFA500), // Orange
-    )
-//    Button(
-//        onClick = {
-////            onDetailDishClick(dish)
-//        },
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .background(color = Color(0x00000000)) // Fond transparent
-//    ) {
-//        Text(
-//            text = dish,
-//            color = Color(0xFFFFA500), // Orange
-//        )
-//    }
+fun DishRow(dish: String, onDetailDishClick: (String) -> Unit) {
+    Button(
+        onClick = {
+            onDetailDishClick(dish)
+        },
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = Color(0x00000000)) // Fond transparent
+    ) {
+        Text(
+            text = dish,
+            color = Color(0xFF000000), // Orange
+        )
+    }
 }
 
 

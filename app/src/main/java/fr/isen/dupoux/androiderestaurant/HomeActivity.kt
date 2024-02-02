@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,6 +27,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -40,13 +42,21 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Android_RestaurantTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = Color.Black) {
-                    // Greeting("Android")
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    // Image en fond d'écran
+                    Image(
+                        painter = painterResource(id = R.drawable.fond_tableau_noir), // Remplacez "votre_image" par le nom de votre image sans extension
+                        contentDescription = null, // Ajoutez une description si nécessaire
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+
+                    // Contenu de l'écran
                     HomeScreen(::onMenuClick)
                 }
-                // Image en tant que fond d'écran
-
             }
         }
     }
@@ -70,11 +80,10 @@ fun HomeScreen(onMenuClick: (String) -> Unit) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp), // Ajustez le padding selon vos besoins
+                .padding(30.dp), // Ajustez le padding selon vos besoins
             horizontalArrangement = Arrangement.End
         ) {
             WelcomeText()
-
         }
         ImageDisplay()
         Spacer(modifier = Modifier.height(24.dp))
@@ -118,7 +127,7 @@ fun ImageDisplay() {
     Image(
         painter = painterResource(id = R.drawable.image_cuistot),
         contentDescription = null, // La description doit être fournie si l'image est importante pour l'accessibilité
-        modifier = Modifier.size(300.dp) // Ajustez la taille de l'image selon vos besoins
+        modifier = Modifier.size(250.dp) // Ajustez la taille de l'image selon vos besoins
     )
 }
 

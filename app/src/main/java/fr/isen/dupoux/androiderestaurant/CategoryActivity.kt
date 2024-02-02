@@ -29,7 +29,7 @@ import fr.isen.dupoux.androiderestaurant.ui.theme.Android_RestaurantTheme
 class CategoryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val categoryTitle = intent.getStringExtra("category") ?: ""
+        val categoryTitle = intent.getStringExtra("categoryTitle") ?: ""
 
         setContent {
             Android_RestaurantTheme {

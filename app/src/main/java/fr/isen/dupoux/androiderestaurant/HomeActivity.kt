@@ -107,7 +107,7 @@ fun ButtonWithText(buttonText: String, onMenuClick: (String) -> Unit) {
     ) {
         Text(
             text = buttonText,
-            color = Color(0xFFFFA500), // Orange
+            color = Color(0xFF000000), // Orange
         )
     }
 }

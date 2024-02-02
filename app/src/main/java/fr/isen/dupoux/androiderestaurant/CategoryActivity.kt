@@ -10,8 +10,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -23,11 +26,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import fr.isen.dupoux.androiderestaurant.ui.theme.Android_RestaurantTheme
 import org.json.JSONObject
 
@@ -51,6 +58,16 @@ class CategoryActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
+                    Text(
+                        text = categoryTitle,
+                        color = Color(0xFFFFA500),
+                        style = TextStyle(
+                            fontSize = 24.sp // Modifiez la taille de la police selon vos besoins
+                        ),
+                        modifier = Modifier
+                            .align(Alignment.TopCenter) // Alignement vertical en haut
+                            .offset(y = 5.dp) // Ajustez la valeur y pour déplacer le texte vers le bas
+                    )
 
                     DishListComponent(getCategoryItems(categoryTitle), ::onDetailDishClick)
                 }
@@ -67,6 +84,8 @@ class CategoryActivity : ComponentActivity() {
             jsonObject,
             {
                 Log.d("CategoryActivity", "les données en brut : $it")
+                val result = Gson().fromJson(it.toString(), DataResult::class.java)
+                result.data[0].items
             },
             {
                 Log.e("CategoryActivity", "ERREUR : $it")

@@ -87,7 +87,14 @@ fun HomeScreen(onMenuClick: (String) -> Unit) {
         }
         ImageDisplay()
         Spacer(modifier = Modifier.height(24.dp))
-
+        Text(
+            text = "Menu",
+            color = Color(0xFFFFA500), // Orange
+            style = TextStyle(
+                fontSize = 24.sp // Modifiez la taille de la police selon vos besoins
+            )
+        )
+        Spacer(modifier = Modifier.height(10.dp))
         ButtonWithText("Entrée", onMenuClick)
         ButtonWithText("Plat", onMenuClick)
         ButtonWithText("Dessert", onMenuClick)
@@ -127,14 +134,14 @@ fun ImageDisplay() {
     Image(
         painter = painterResource(id = R.drawable.image_cuistot),
         contentDescription = null, // La description doit être fournie si l'image est importante pour l'accessibilité
-        modifier = Modifier.size(250.dp) // Ajustez la taille de l'image selon vos besoins
+        modifier = Modifier.size(200.dp) // Ajustez la taille de l'image selon vos besoins
     )
 }
 
 @Composable
 fun WelcomeText() {
     Text(
-        text = "Bienvenue \nchez \n\nDroid Restaurant",
+        text = "Bienvenue \nchez \n\nPatrice Restaurant",
         style = TextStyle(
             color = Color(0xFFFFA500), // Orange
             fontWeight = FontWeight.Bold,

@@ -8,30 +8,30 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.android.volley.Request
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import fr.isen.dupoux.androiderestaurant.ui.theme.Android_RestaurantTheme
+import org.json.JSONObject
+
 
 class CategoryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val categoryTitle = intent.getStringExtra("categoryTitle") ?: ""
-
+        fetchdata()
         setContent {
             Android_RestaurantTheme {
                 // A surface container using the 'background' color from the theme
@@ -39,12 +39,27 @@ class CategoryActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    println("getCategory")
-                    println(getCategoryItems(categoryTitle))
                     DishListComponent(getCategoryItems(categoryTitle), ::onDetailDishClick)
                 }
             }
         }
+    }
+    fun fetchdata() {
+        val url = "http://test.api.catering.bluecodegames.com/menu"
+        val jsonObject = JSONObject()
+        jsonObject.put("id_shop", "1")
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.POST,
+            url,
+            jsonObject,
+            {
+                Log.d("CategoryActivity", "les données en brut : $it")
+            },
+            {
+                Log.e("CategoryActivity", "ERREUR : $it")
+            })
+        val requestQueue = Volley.newRequestQueue(this)
+        requestQueue.add(jsonObjectRequest)
     }
     fun getCategoryItems(category: String): List<String> {
         return when (category.lowercase()) {
@@ -54,7 +69,6 @@ class CategoryActivity : ComponentActivity() {
             else -> emptyList()
         }
     }
-
     private fun onDetailDishClick(dish: String) {
         Toast.makeText(this, dish, Toast.LENGTH_LONG).show()
         val intent = Intent(this, DetailDishActivity::class.java).apply {
@@ -81,7 +95,7 @@ fun DishListComponent(dishes: List<String>, onDetailDishClick: (String) -> Unit)
 fun DishRow(dish: String, onDetailDishClick: (String) -> Unit) {
     Button(
         onClick = {
-            onDetailDishClick(dish)
+//            onDetailDishClick(dish)
         },
         modifier = Modifier
             .fillMaxWidth()

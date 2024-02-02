@@ -45,10 +45,11 @@ class HomeActivity : ComponentActivity() {
                     // Greeting("Android")
                     HomeScreen(::onMenuClick)
                 }
+                // Image en tant que fond d'écran
+
             }
         }
     }
-
     private fun onMenuClick(category: String) {
         Toast.makeText(this, category, Toast.LENGTH_LONG).show()
         val intent = Intent(this, CategoryActivity::class.java).apply {

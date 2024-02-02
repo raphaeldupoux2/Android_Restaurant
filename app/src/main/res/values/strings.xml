@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Android_Restaurant</string>
+    <string name="title_activity_main">HomeActivity</string>
+    <string name="title_activity_category">CategoryActivity</string>
+
+    <!-- Définir les titres des plats pour chaque catégorie -->
+    <string-array name="entrees">
+        <item>Tartare saumon mariné et avocat</item>
+        <item>Salade de chevre chaud</item>
+        <item>Salade Tomate Mozarella et sauce Balsamique</item>
+    </string-array>
+    <string-array name="plats">
+        <item>Lasagne</item>
+        <item>Blanquette de veau avec riz</item>
+        <item>Pate Carbonara</item>
+    </string-array>
+    <string-array name="desserts">
+        <item>Moelleux au chocolat</item>
+        <item>Tiramisu Speculos</item>
+        <item>Salade de fruits de saison</item>
+    </string-array>
+    <string name="title_activity_detail_plat">DetailPlatActivity</string>
+
+</resources>

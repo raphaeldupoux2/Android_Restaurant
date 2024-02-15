@@ -13,15 +13,24 @@
 </string-array>
 
 <string-array name="TartareSaumonDétails">
-    <item>Dés de saumon mariné dans de la sauce soja salé et des dés d avocats</item>
+    <item>Dés de saumon mariné dans de la sauce soja salé,</item>
+    <item>dés avocats</item>
 </string-array>
 
 <string-array name="SaladeChevreDétails">
-    <item>Salade de mache, tomate cerise, lardon, champignon frais, tranche de pain grillé avec une tranche de chevre et miel</item>
+    <item>Salade de mache,</item>
+    <item>tomate cerise,</item>
+    <item>lardon,</item>
+    <item>champignon frais,</item>
+    <item>tranche de pain grillé,</item>
+    <item>tranche de chevre,</item>
+    <item>miel</item>
 </string-array>
 
 <string-array name="TomateMozzaDétails">
-    <item>Rondelle de tomate et de mozarella avec sauce de Balzamique</item>
+    <item>Rondelle de tomate,</item>
+    <item>Rondelle de mozarella,</item>
+    <item>Sauce Balzamique</item>
 </string-array>
 
 <string-array name="plats">
@@ -31,15 +40,26 @@
 </string-array>
 
 <string-array name="LasagneDétails">
-    <item>pate à lasagne, sauce bolognaise, sauce béchamel et gratiné d émentale</item>
+    <item>pâte à lasagne,</item>
+    <item>sauce bolognaise,</item>
+    <item>sauce béchamel</item>
+    <item>gratiné d émentale</item>
 </string-array>
 
 <string-array name="BlanquetteDétails">
-    <item>veau, champignon frais, carotte, oignon, sauce à base d eau, de cube de bouillon, vin et creme fraiche </item>
+    <item>Veau,</item>
+    <item>champignon frais,</item>
+    <item>carotte,</item>
+    <item>oignon,</item>
+    <item>sauce à base de cube de bouillon,</item>
+    <item>vin,</item>
+    <item>creme fraiche </item>
 </string-array>
 
 <string-array name="PateCarbonaraeDétails">
-    <item>pate, sauce à base de creme fraiche, lardon, oignon, jaune d oeuf</item>
+    <item>Pate fraiche</item>
+    <item>Sauce à base de creme fraiche</item>
+    <item>Lardon, oignon, jaune d oeuf</item>
 </string-array>
 
 <string-array name="desserts">
@@ -49,15 +69,23 @@
 </string-array>
 
 <string-array name="MoelleuxChocolatDetails">
-    <item>gateau au chocolat avec une boule de glace à la vanille</item>
+    <item>gateau au chocolat coulant (sucre, farine, beurre, chocolat, oeuf)</item>
+    <item>une boule de glace à la vanille</item>
 </string-array>
 
 <string-array name="TarteCitronMeringueDetails">
-    <item>tarte à la creme de citron avec sa creme meringuée chauffer au chalumeau </item>
+    <item>tarte à la pâte brisée</item>
+    <item>crème de citron</item>
+    <item>meringue (blanc d oeuf) chauffer au chalumeau </item>
 </string-array>
 
 <string-array name="SaladeFruitDetails">
-    <item>salade d ananas, banane, clementine, kiwi, poire, pomme </item>
+    <item>Ananas</item>
+    <item>Banane</item>
+    <item>Clementine</item>
+    <item>Kiwi</item>
+    <item>Poire</item>
+    <item>Pomme </item>
 </string-array>
 
 </resources>

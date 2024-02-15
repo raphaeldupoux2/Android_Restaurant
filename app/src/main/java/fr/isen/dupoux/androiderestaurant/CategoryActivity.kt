@@ -10,28 +10,24 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.android.volley.Request
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
@@ -74,7 +70,7 @@ class CategoryActivity : ComponentActivity() {
             }
         }
     }
-    fun fetchdata() {
+    fun fetchdata() {  // categoryTitle: String, itemState: SnapshotStateList<RouteListingPreference.Item>
         val url = "http://test.api.catering.bluecodegames.com/menu"
         val jsonObject = JSONObject()
         jsonObject.put("id_shop", "1")
@@ -85,6 +81,8 @@ class CategoryActivity : ComponentActivity() {
             {
                 Log.d("CategoryActivity", "les données en brut : $it")
                 val result = Gson().fromJson(it.toString(), DataResult::class.java)
+//                val itemsFromCategory = result.data.find { it.nameFr == categoryTitle }?.items ?: emptyList()
+//                ItemState.addAll(itemsFromCategory)
                 result.data[0].items
             },
             {
@@ -125,9 +123,12 @@ fun DishListComponent(dishes: List<String>, onDetailDishClick: (String) -> Unit)
 
 @Composable
 fun DishRow(dish: String, onDetailDishClick: (String) -> Unit) {
+    val context = LocalContext.current
+
     Button(
         onClick = {
-//            onDetailDishClick(dish)
+            showToast(context, "Vous avez cliqué sur $dish.")
+            onDetailDishClick(dish)
         },
         modifier = Modifier
             .fillMaxWidth()
